@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: pat_postgres
+    environment:
+      POSTGRES_DB: priceactiontalk
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./server/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - pat_network
+
+  # Redis (optional for caching)
+  redis:
+    image: redis:7-alpine
+    container_name: pat_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - pat_network
+
+  # Backend API Server
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: pat_api
+    environment:
+      NODE_ENV: development
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: priceactiontalk
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: password
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: your-super-secret-jwt-key-here
+      PORT: 3001
+      WS_PORT: 3002
+    ports:
+      - "3001:3001"
+      - "3002:3002"
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./server:/app/server
+      - /app/node_modules
+    networks:
+      - pat_network
+    command: npm run server:dev
+
+  # Frontend SvelteKit App
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: pat_frontend
+    environment:
+      NODE_ENV: development
+      API_URL: http://api:3001
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src:/app/src
+      - ./static:/app/static
+      - /app/node_modules
+    networks:
+      - pat_network
+    command: npm run dev -- --host
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  pat_network:
+    driver: bridge

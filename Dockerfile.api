@@ -1,0 +1,22 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy server source code
+COPY server/ ./server/
+COPY tsconfig.json ./
+
+# Build TypeScript
+RUN npm run server:build
+
+# Expose ports
+EXPOSE 3001 3002
+
+# Start the server
+CMD ["npm", "run", "server:start"]
