@@ -555,16 +555,16 @@
 				{/if}
 			</div>
 		</div>
+		{/if}
 
 		<svelte:fragment slot="footer">
 			<Button variant="secondary" on:click={() => showChallengeModal = false}>
 				Close
 			</Button>
-			{#if selectedChallenge.status === 'active' && !selectedChallenge.user_joined}
-				<Button on:click={() => joinChallenge(selectedChallenge.id)}>
+			{#if selectedChallenge && selectedChallenge.status === 'active' && !selectedChallenge.user_joined}
+				<Button on:click={() => selectedChallenge && joinChallenge(selectedChallenge.id)}>
 					Join Challenge ({selectedChallenge.entry_fee_xp} XP)
 				</Button>
 			{/if}
 		</svelte:fragment>
-	{/if}
 </Modal>

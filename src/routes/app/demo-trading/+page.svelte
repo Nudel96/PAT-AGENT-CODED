@@ -628,8 +628,9 @@
 		</div>
 
 		<!-- Current market price -->
-		{@const marketPrice = getMarketPrice(newTrade.instrument)}
-		{#if marketPrice}
+		{#if newTrade.instrument}
+			{@const marketPrice = getMarketPrice(newTrade.instrument)}
+			{#if marketPrice}
 			<div class="p-3 bg-background rounded-lg">
 				<div class="flex justify-between items-center">
 					<span class="text-muted">Current Price:</span>
@@ -641,6 +642,7 @@
 				</div>
 			</div>
 		{/if}
+	{/if}
 	</form>
 
 	<svelte:fragment slot="footer">

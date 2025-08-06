@@ -486,9 +486,9 @@
 					<div class="mt-6 pt-4 border-t border-border">
 						<div class="flex items-center justify-between">
 							<span class="text-sm text-muted">Ready to continue?</span>
-							<Button 
+							<Button
 								variant="primary"
-								on:click={() => completeModule(selectedModule.id)}
+								on:click={() => selectedModule && completeModule(selectedModule.id)}
 							>
 								{selectedModule.user_status === 'not_started' ? 'Start' : 'Complete'} Module
 							</Button>

@@ -10,8 +10,8 @@
 		xpProgress: 0
 	};
 
-	let recentTrades = [];
-	let macroData = [];
+	let recentTrades: any[] = [];
+	let macroData: any[] = [];
 	let isLoading = true;
 
 	onMount(async () => {

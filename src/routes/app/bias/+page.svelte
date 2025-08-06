@@ -148,6 +148,13 @@
 		return 'success';
 	}
 
+	function handleCurrencyKeydown(event: Event, currency: string) {
+		const keyEvent = event as KeyboardEvent;
+		if (keyEvent.key === 'Enter') {
+			selectedCurrency = currency;
+		}
+	}
+
 	async function generateMockData() {
 		try {
 			const response = await fetch('/api/macro/bias/mock', {
@@ -205,7 +212,14 @@
 		<!-- Currency bias cards -->
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 			{#each macroData as currency}
-				<Card hover class="cursor-pointer" on:click={() => selectedCurrency = currency.currency}>
+				<Card
+					hover
+					class="cursor-pointer"
+					on:click={() => selectedCurrency = currency.currency}
+					role="button"
+					tabindex="0"
+					on:keydown={(e) => handleCurrencyKeydown(e, currency.currency)}
+				>
 					<div class="flex items-center justify-between mb-3">
 						<h3 class="text-lg font-semibold text-foreground">{currency.currency}</h3>
 						<div class="w-4 h-4 rounded-full {getHeatScoreColor(currency.heat_score)}"></div>

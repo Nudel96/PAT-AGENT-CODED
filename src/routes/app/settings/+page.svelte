@@ -11,6 +11,7 @@
 		last_name: '',
 		bio: '',
 		timezone: 'UTC',
+		theme: 'dark' as 'light' | 'dark',
 		language: 'en',
 		notifications_enabled: true
 	};
@@ -202,8 +203,9 @@
 					</div>
 
 					<div>
-						<label class="form-label">Bio</label>
+						<label for="bio" class="form-label">Bio</label>
 						<textarea
+							id="bio"
 							bind:value={profile.bio}
 							placeholder="Tell us about yourself..."
 							class="form-input resize-none"
@@ -216,8 +218,8 @@
 
 					<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 						<div>
-							<label class="form-label">Timezone</label>
-							<select bind:value={profile.timezone} class="form-input" on:change={clearMessages}>
+							<label for="timezone" class="form-label">Timezone</label>
+							<select id="timezone" bind:value={profile.timezone} class="form-input" on:change={clearMessages}>
 								{#each timezones as tz}
 									<option value={tz}>{tz}</option>
 								{/each}
@@ -225,8 +227,8 @@
 						</div>
 
 						<div>
-							<label class="form-label">Language</label>
-							<select bind:value={profile.language} class="form-input" on:change={clearMessages}>
+							<label for="language" class="form-label">Language</label>
+							<select id="language" bind:value={profile.language} class="form-input" on:change={clearMessages}>
 								{#each languages as lang}
 									<option value={lang.code}>{lang.name}</option>
 								{/each}
@@ -248,8 +250,9 @@
 			<div class="space-y-6">
 				<!-- Theme Selection -->
 				<div>
-					<label class="form-label">Theme</label>
-					<div class="flex space-x-4">
+					<fieldset>
+						<legend class="form-label">Theme</legend>
+						<div class="flex space-x-4">
 						<label class="flex items-center">
 							<input
 								type="radio"
@@ -270,7 +273,8 @@
 							/>
 							<span class="text-sm">Dark</span>
 						</label>
-					</div>
+						</div>
+					</fieldset>
 				</div>
 
 				<!-- Notifications -->
