@@ -1,75 +1,97 @@
 <script lang="ts">
+	import { TrendingUp, BarChart, GraduationCap, BookOpen, Users, Shield } from '$lib/components/icons';
+
 	const features = [
 		{
-			title: 'Macro Bias Tool',
-			description: 'AI-driven bias scoring engine that processes macroeconomic data to provide HeatScore from -5 to +5 with real-time updates.',
-			icon: '📊',
-			href: '/features#macro-bias'
+			title: 'Macro Bias Analysis',
+			description: 'AI-driven bias scoring engine that processes macroeconomic data to provide HeatScore from -5 to +5 with real-time institutional data feeds.',
+			icon: TrendingUp,
+			href: '/features#macro-bias',
+			category: 'Analysis'
 		},
 		{
-			title: 'Heatman Widget',
-			description: 'Real-time market heatmap with multi-pillar currency strength visualization including COT, retail sentiment, and price momentum.',
-			icon: '🔥',
-			href: '/features#heatman'
+			title: 'Currency Strength Matrix',
+			description: 'Real-time market heatmap with multi-pillar currency strength visualization including COT data, retail sentiment, and price momentum analysis.',
+			icon: BarChart,
+			href: '/features#heatman',
+			category: 'Visualization'
 		},
 		{
-			title: 'XP Learning System',
-			description: 'Structured 1-3 year learning roadmap with interactive lessons, quizzes, and level progression from D-tier to A+.',
-			icon: '🎓',
-			href: '/features#learning'
+			title: 'Structured Learning System',
+			description: 'Comprehensive 1-3 year learning roadmap with interactive lessons, assessments, and level progression from novice to expert trader.',
+			icon: GraduationCap,
+			href: '/features#learning',
+			category: 'Education'
 		},
 		{
-			title: 'Trading Journal',
-			description: 'Comprehensive trade logging with advanced analytics, psychology matrix, and trade replay functionality.',
-			icon: '📝',
-			href: '/features#journal'
+			title: 'Advanced Trading Journal',
+			description: 'Comprehensive trade logging with advanced analytics, psychology matrix, trade replay functionality, and institutional-grade reporting.',
+			icon: BookOpen,
+			href: '/features#journal',
+			category: 'Analytics'
 		},
 		{
-			title: 'Community Hub',
-			description: 'Real-time trading challenges with leaderboards, WebSocket-powered chat, and live trading rooms.',
-			icon: '👥',
-			href: '/features#community'
+			title: 'Professional Community',
+			description: 'Real-time trading challenges with verified leaderboards, WebSocket-powered chat, and live trading rooms with experienced mentors.',
+			icon: Users,
+			href: '/features#community',
+			category: 'Community'
 		},
 		{
-			title: 'Risk Management',
-			description: 'Trade Blocker with automatic disabling after drawdown threshold and mandatory reflection tasks.',
-			icon: '🛡️',
-			href: '/features#risk'
+			title: 'Intelligent Risk Management',
+			description: 'Automated trade blocking system with behavioral intervention, mandatory reflection protocols, and real-time portfolio heat monitoring.',
+			icon: Shield,
+			href: '/features#risk',
+			category: 'Risk Control'
 		}
 	];
 </script>
 
-<section class="py-24 bg-surface">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="section bg-surface">
+	<div class="container">
 		<!-- Section header -->
 		<div class="text-center mb-16">
-			<h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-				Comprehensive Trading Tools
+			<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+				<TrendingUp size={16} />
+				Professional Trading Tools
+			</div>
+			<h2 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-6">
+				Institutional-Grade Trading Infrastructure
 			</h2>
-			<p class="mt-4 text-lg text-muted max-w-2xl mx-auto">
-				Everything you need to master price action trading in one powerful platform. 
-				From macro analysis to community learning.
+			<p class="text-xl text-muted max-w-3xl mx-auto leading-relaxed">
+				Every tool is engineered to professional standards with enterprise-level reliability, 
+				sophisticated analytics, and institutional-quality data feeds.
 			</p>
 		</div>
 
 		<!-- Features grid -->
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
 			{#each features as feature}
 				<a 
 					href={feature.href}
-					class="card group hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+					class="group card-elevated hover:border-primary/50 transition-all duration-300"
 				>
-					<div class="text-4xl mb-4">{feature.icon}</div>
-					<h3 class="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-						{feature.title}
-					</h3>
-					<p class="text-muted leading-relaxed">
+					<div class="flex items-start gap-4 mb-4">
+						<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+							<svelte:component this={feature.icon} class="text-primary" size={24} />
+						</div>
+						<div class="flex-1">
+							<div class="text-xs font-semibold text-primary uppercase tracking-wider mb-1">
+								{feature.category}
+							</div>
+							<h3 class="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+								{feature.title}
+							</h3>
+						</div>
+					</div>
+					
+					<p class="text-muted leading-relaxed mb-4">
 						{feature.description}
 					</p>
 					
-					<!-- Arrow indicator -->
-					<div class="mt-4 flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-						<span class="text-sm font-medium">Learn more</span>
+					<!-- Professional CTA -->
+					<div class="flex items-center text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+						<span class="text-sm font-semibold">Explore Feature</span>
 						<svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 						</svg>
@@ -78,23 +100,30 @@
 			{/each}
 		</div>
 
-		<!-- Bottom CTA -->
-		<div class="text-center mt-16">
-			<div class="bg-background rounded-xl p-8 border border-border">
-				<h3 class="text-2xl font-bold text-foreground mb-4">
-					Ready to Transform Your Trading?
-				</h3>
-				<p class="text-muted mb-6 max-w-2xl mx-auto">
-					Join thousands of traders who are already using PriceActionTalk to improve their trading performance 
-					and build lasting skills in the markets.
-				</p>
-				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<a href="/register" class="btn btn-primary text-lg px-8 py-3">
-						Start Free Trial
-					</a>
-					<a href="/pricing" class="btn btn-secondary text-lg px-8 py-3">
-						View Pricing
-					</a>
+		<!-- Professional CTA Section -->
+		<div class="relative">
+			<div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-2xl"></div>
+			<div class="relative bg-surface-elevated rounded-2xl p-12 border border-border">
+				<div class="text-center">
+					<div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold mb-6">
+						<Target size={16} />
+						Enterprise Ready
+					</div>
+					<h3 class="text-3xl font-bold text-foreground mb-4">
+						Transform Your Trading Performance
+					</h3>
+					<p class="text-muted mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+						Join thousands of professional traders who rely on PriceActionTalk for institutional-quality 
+						market analysis, structured education, and systematic performance improvement.
+					</p>
+					<div class="flex flex-col sm:flex-row gap-4 justify-center">
+						<a href="/register" class="btn btn-primary text-lg px-8 py-4 font-semibold">
+							Start Professional Trial
+						</a>
+						<a href="/pricing" class="btn btn-secondary text-lg px-8 py-4 font-semibold">
+							View Enterprise Plans
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
