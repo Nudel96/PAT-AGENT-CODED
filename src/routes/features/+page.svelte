@@ -3,6 +3,10 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import Card from '$lib/components/ui/Card.svelte';
 	import Badge from '$lib/components/ui/Badge.svelte';
+	import { 
+		TrendingUp, BarChart, GraduationCap, BookOpen, Users, Shield,
+		Activity, Target, Award, Brain, Lock, Unlock
+	} from '$lib/components/icons';
 
 	let activeSection = '';
 
@@ -43,94 +47,92 @@
 	const features = [
 		{
 			id: 'macro-bias',
-			title: 'Macro Bias Tool',
+			title: 'Macro Bias Analysis',
 			subtitle: 'AI-Driven Market Intelligence',
-			icon: 'trending-up',
-			price: 'Included in Premium',
-			description: 'Professional-grade macroeconomic analysis engine that processes institutional data to provide directional bias scoring.'
+			icon: TrendingUp,
+			category: 'Analysis Engine'
 		},
 		{
 			id: 'heatman',
-			title: 'Heatman Widget',
-			subtitle: 'Currency Strength Visualization',
-			icon: 'bar-chart',
-			price: 'Included in Basic+',
-			description: 'Real-time multi-pillar currency strength heatmap with institutional positioning data and retail sentiment analysis.'
+			title: 'Currency Strength Matrix',
+			subtitle: 'Real-Time Visualization',
+			icon: BarChart,
+			category: 'Market Data'
 		},
 		{
 			id: 'learning',
-			title: 'XP Learning System',
-			subtitle: 'Structured Trading Education',
-			icon: 'graduation-cap',
-			price: 'Included in All Plans',
-			description: 'Comprehensive 1-3 year learning roadmap with gamified progression from novice to expert trader.'
+			title: 'Professional Education',
+			subtitle: 'Structured Learning System',
+			icon: GraduationCap,
+			category: 'Education'
 		},
 		{
 			id: 'journal',
-			title: 'Trading Journal',
-			subtitle: 'Advanced Performance Analytics',
-			icon: 'book-open',
-			price: 'Included in Basic+',
-			description: 'Comprehensive trade logging with psychology matrix, replay functionality, and institutional-grade analytics.'
+			title: 'Advanced Analytics',
+			subtitle: 'Performance Intelligence',
+			icon: BookOpen,
+			category: 'Analytics'
 		},
 		{
 			id: 'community',
-			title: 'Community Hub',
-			subtitle: 'Collaborative Trading Environment',
-			icon: 'users',
-			price: 'Included in All Plans',
-			description: 'Real-time challenges, leaderboards, and live trading rooms with verified performance tracking.'
+			title: 'Professional Network',
+			subtitle: 'Collaborative Environment',
+			icon: Users,
+			category: 'Community'
 		},
 		{
 			id: 'risk',
 			title: 'Risk Management',
-			subtitle: 'Intelligent Capital Protection',
-			icon: 'shield',
-			price: 'Included in Premium',
-			description: 'Automated trade blocking system with behavioral intervention and mandatory reflection protocols.'
+			subtitle: 'Capital Protection System',
+			icon: Shield,
+			category: 'Risk Control'
 		}
 	];
 </script>
 
 <svelte:head>
-	<title>Features - PriceActionTalk | Professional Trading Tools</title>
-	<meta name="description" content="Discover PriceActionTalk's comprehensive suite of professional trading tools: AI-driven macro analysis, currency strength heatmaps, structured learning, and advanced risk management." />
+	<title>Professional Features - PriceActionTalk | Institutional Trading Tools</title>
+	<meta name="description" content="Discover PriceActionTalk's comprehensive suite of professional trading tools: AI-driven macro analysis, currency strength matrices, structured education, and advanced risk management systems." />
 </svelte:head>
 
-<!-- Hero Section -->
+<!-- Professional Hero Section -->
 <section class="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-24">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="container">
 		<div class="text-center">
-			<h1 class="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
+			<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-6">
+				<Activity size={16} />
+				Institutional-Grade Infrastructure
+			</div>
+			<h1 class="text-5xl font-bold tracking-tight text-foreground sm:text-6xl mb-6">
 				Professional Trading Tools
 			</h1>
-			<p class="mt-6 text-xl leading-8 text-muted max-w-3xl mx-auto">
-				Institutional-quality trading infrastructure designed for serious retail traders. 
-				Every tool is built to professional standards with enterprise-level reliability and sophistication.
+			<p class="text-xl leading-8 text-muted max-w-4xl mx-auto mb-10">
+				Enterprise-level trading infrastructure with institutional-quality data feeds, advanced analytics, 
+				and systematic education designed for serious market participants who demand professional results.
 			</p>
-			<div class="mt-10 flex items-center justify-center gap-x-6">
-				<Button href="/register" size="lg" class="px-8 py-4 text-lg">
-					Start Free Trial
+			<div class="flex items-center justify-center gap-6">
+				<Button href="/register" size="lg" class="px-8 py-4 text-lg font-semibold">
+					Start Professional Trial
 				</Button>
-				<Button href="/pricing" variant="secondary" size="lg" class="px-8 py-4 text-lg">
-					View Pricing
+				<Button href="/pricing" variant="secondary" size="lg" class="px-8 py-4 text-lg font-semibold">
+					Enterprise Pricing
 				</Button>
 			</div>
 		</div>
 	</div>
 </section>
 
-<!-- Features Navigation -->
+<!-- Professional Features Navigation -->
 <section class="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="container">
 		<nav class="flex space-x-8 overflow-x-auto py-4">
 			{#each features as feature}
 				<a 
 					href="#{feature.id}"
-					class="flex-shrink-0 px-3 py-2 text-sm font-medium rounded-md transition-colors
+					class="flex-shrink-0 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200
 						{activeSection === feature.id 
-							? 'bg-primary text-primary-foreground' 
-							: 'text-muted hover:text-foreground hover:bg-background'}"
+							? 'bg-primary text-white shadow-md' 
+							: 'text-muted hover:text-foreground hover:bg-surface'}"
 				>
 					{feature.title}
 				</a>
@@ -139,91 +141,98 @@
 	</div>
 </section>
 
-<!-- Feature Sections -->
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 space-y-32">
+<!-- Professional Feature Sections -->
+<div class="container py-20 space-y-32">
 
-	<!-- Macro Bias Tool -->
+	<!-- Macro Bias Analysis -->
 	<section id="macro-bias" class="scroll-mt-20">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 			<div>
-				<div class="flex items-center gap-3 mb-6">
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-						<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-						</svg>
+				<div class="flex items-center gap-4 mb-8">
+					<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+						<TrendingUp class="text-primary" size={32} />
 					</div>
 					<div>
-						<h2 class="text-3xl font-bold text-foreground">Macro Bias Tool</h2>
-						<p class="text-lg text-primary font-medium">AI-Driven Market Intelligence</p>
+						<div class="text-sm font-bold text-primary uppercase tracking-wider mb-1">Analysis Engine</div>
+						<h2 class="text-4xl font-bold text-foreground">Macro Bias Analysis</h2>
+						<p class="text-lg text-muted font-medium">AI-Driven Market Intelligence</p>
 					</div>
 				</div>
 
-				<div class="space-y-6">
+				<div class="space-y-8">
 					<p class="text-xl text-muted leading-relaxed">
-						Eliminate directional guesswork with our proprietary AI-powered macroeconomic analysis engine.
-						Process the same institutional-grade data that hedge funds use to make billion-dollar decisions.
+						Eliminate directional uncertainty with our proprietary AI-powered macroeconomic analysis engine.
+						Access the same institutional-grade data that hedge funds use for billion-dollar trading decisions.
 					</p>
 
-					<div class="bg-background rounded-xl p-6 border border-border">
-						<h3 class="text-lg font-semibold text-foreground mb-4">Core Problem Solved</h3>
-						<p class="text-muted">
-							95% of retail traders fail because they trade against institutional money flow. Our Macro Bias Tool
-							gives you the same directional intelligence that professional traders use, eliminating the #1 cause
-							of retail trading failure: fighting the institutional trend.
+					<div class="bg-surface-elevated rounded-2xl p-8 border border-border">
+						<h3 class="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+							<Brain class="text-primary" size={20} />
+							Core Problem Resolution
+						</h3>
+						<p class="text-muted leading-relaxed">
+							95% of retail traders fail because they trade against institutional money flow. Our Macro Bias Analysis
+							provides the same directional intelligence used by professional trading desks, eliminating the primary
+							cause of retail trading failure: fighting institutional positioning.
 						</p>
 					</div>
 
-					<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-						<div class="bg-success/5 rounded-lg p-4 border border-success/20">
-							<div class="text-2xl font-bold text-success">-5 to +5</div>
-							<div class="text-sm text-muted">HeatScore Range</div>
+					<div class="grid grid-cols-2 gap-6">
+						<div class="bg-success/5 rounded-2xl p-6 border border-success/20">
+							<div class="text-3xl font-bold text-success">-5 to +5</div>
+							<div class="text-sm text-muted font-medium">HeatScore Range</div>
+							<div class="text-xs text-success font-semibold mt-1">Precision Scoring</div>
 						</div>
-						<div class="bg-primary/5 rounded-lg p-4 border border-primary/20">
-							<div class="text-2xl font-bold text-primary">50+</div>
-							<div class="text-sm text-muted">Data Sources</div>
+						<div class="bg-primary/5 rounded-2xl p-6 border border-primary/20">
+							<div class="text-3xl font-bold text-primary">50+</div>
+							<div class="text-sm text-muted font-medium">Data Sources</div>
+							<div class="text-xs text-primary font-semibold mt-1">Institutional Feeds</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="space-y-6">
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Technical Capabilities</h3>
-					<ul class="space-y-3">
-						<li class="flex items-start gap-3">
-							<div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+			<div class="space-y-8">
+				<Card class="p-8">
+					<h3 class="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+						<Activity class="text-primary" size={24} />
+						Technical Capabilities
+					</h3>
+					<ul class="space-y-4">
+						<li class="flex items-start gap-4">
+							<div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
 							<div>
-								<div class="font-medium text-foreground">Real-Time Data Processing</div>
-								<div class="text-sm text-muted">Continuous analysis of 50+ macroeconomic indicators including COT data, central bank communications, and economic calendars</div>
+								<div class="font-bold text-foreground mb-1">Real-Time Data Processing</div>
+								<div class="text-sm text-muted leading-relaxed">Continuous analysis of 50+ macroeconomic indicators including COT data, central bank communications, and economic calendar events</div>
 							</div>
 						</li>
-						<li class="flex items-start gap-3">
-							<div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+						<li class="flex items-start gap-4">
+							<div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
 							<div>
-								<div class="font-medium text-foreground">Proprietary HeatScore Algorithm</div>
-								<div class="text-sm text-muted">Machine learning models trained on 10+ years of market data to generate precise directional bias scores</div>
+								<div class="font-bold text-foreground mb-1">Proprietary HeatScore Algorithm</div>
+								<div class="text-sm text-muted leading-relaxed">Machine learning models trained on 10+ years of market data to generate precise directional bias scores</div>
 							</div>
 						</li>
-						<li class="flex items-start gap-3">
-							<div class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+						<li class="flex items-start gap-4">
+							<div class="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
 							<div>
-								<div class="font-medium text-foreground">Institutional Data Integration</div>
-								<div class="text-sm text-muted">Direct feeds from major liquidity providers and institutional positioning data previously available only to hedge funds</div>
+								<div class="font-bold text-foreground mb-1">Institutional Data Integration</div>
+								<div class="text-sm text-muted leading-relaxed">Direct feeds from major liquidity providers and institutional positioning data</div>
 							</div>
 						</li>
 					</ul>
 				</Card>
 
-				<Card class="p-6 bg-gradient-to-br from-primary/5 to-secondary/5">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Proven Results</h3>
-					<div class="grid grid-cols-2 gap-4">
+				<Card class="p-8 bg-gradient-to-br from-primary/5 to-accent/5">
+					<h3 class="text-2xl font-bold text-foreground mb-6">Proven Performance</h3>
+					<div class="grid grid-cols-2 gap-6">
 						<div class="text-center">
-							<div class="text-3xl font-bold text-primary">60%</div>
-							<div class="text-sm text-muted">Reduction in directional bias errors</div>
+							<div class="text-4xl font-bold text-primary">60%</div>
+							<div class="text-sm text-muted font-medium">Reduction in directional errors</div>
 						</div>
 						<div class="text-center">
-							<div class="text-3xl font-bold text-success">85%</div>
-							<div class="text-sm text-muted">Accuracy in trend identification</div>
+							<div class="text-4xl font-bold text-success">85%</div>
+							<div class="text-sm text-muted font-medium">Trend identification accuracy</div>
 						</div>
 					</div>
 				</Card>
@@ -231,106 +240,107 @@
 		</div>
 	</section>
 
-	<!-- Heatman Widget -->
+	<!-- Currency Strength Matrix -->
 	<section id="heatman" class="scroll-mt-20">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-			<div class="order-2 lg:order-1 space-y-6">
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Multi-Pillar Analysis</h3>
+			<div class="order-2 lg:order-1 space-y-8">
+				<Card class="p-8">
+					<h3 class="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+						<BarChart class="text-warning" size={24} />
+						Multi-Dimensional Analysis
+					</h3>
 					<div class="space-y-4">
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">COT Positioning</span>
-							<Badge variant="success">Live Data</Badge>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">COT Positioning Data</span>
+							<Badge variant="success">Live Feed</Badge>
 						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">Retail Sentiment</span>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">Retail Sentiment Analysis</span>
 							<Badge variant="primary">Real-Time</Badge>
 						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">Price Momentum</span>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">Price Momentum Indicators</span>
 							<Badge variant="warning">Dynamic</Badge>
 						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">Correlation Matrix</span>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">Correlation Risk Matrix</span>
 							<Badge variant="secondary">28 Pairs</Badge>
 						</div>
 					</div>
 				</Card>
 
-				<Card class="p-6 bg-gradient-to-br from-warning/5 to-error/5">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Institutional Advantage</h3>
-					<p class="text-muted mb-4">
-						See what the big money sees. Our heatmap reveals the same currency strength relationships
-						that institutional traders use to make million-dollar decisions.
+				<Card class="p-8 bg-gradient-to-br from-warning/5 to-error/5">
+					<h3 class="text-2xl font-bold text-foreground mb-4">Institutional Advantage</h3>
+					<p class="text-muted mb-6 leading-relaxed">
+						Access the same currency strength relationships that institutional traders use for million-dollar decisions.
+						Professional-grade visualization reveals market dynamics invisible to retail platforms.
 					</p>
-					<div class="grid grid-cols-2 gap-4 text-center">
+					<div class="grid grid-cols-2 gap-6 text-center">
 						<div>
-							<div class="text-2xl font-bold text-warning">28</div>
-							<div class="text-sm text-muted">Currency Pairs</div>
+							<div class="text-3xl font-bold text-warning">28</div>
+							<div class="text-sm text-muted font-medium">Currency Pairs</div>
 						</div>
 						<div>
-							<div class="text-2xl font-bold text-error">1000+</div>
-							<div class="text-sm text-muted">Updates/Day</div>
+							<div class="text-3xl font-bold text-error">1000+</div>
+							<div class="text-sm text-muted font-medium">Daily Updates</div>
 						</div>
 					</div>
 				</Card>
 			</div>
 
 			<div class="order-1 lg:order-2">
-				<div class="flex items-center gap-3 mb-6">
-					<div class="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center">
-						<svg class="w-6 h-6 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-						</svg>
+				<div class="flex items-center gap-4 mb-8">
+					<div class="w-16 h-16 bg-warning/10 rounded-2xl flex items-center justify-center">
+						<BarChart class="text-warning" size={32} />
 					</div>
 					<div>
-						<h2 class="text-3xl font-bold text-foreground">Heatman Widget</h2>
-						<p class="text-lg text-warning font-medium">Currency Strength Visualization</p>
+						<div class="text-sm font-bold text-warning uppercase tracking-wider mb-1">Market Data</div>
+						<h2 class="text-4xl font-bold text-foreground">Currency Strength Matrix</h2>
+						<p class="text-lg text-muted font-medium">Real-Time Visualization</p>
 					</div>
 				</div>
 
-				<div class="space-y-6">
+				<div class="space-y-8">
 					<p class="text-xl text-muted leading-relaxed">
-						Transform complex currency relationships into instant visual intelligence. See which currencies
-						are strongest and weakest in real-time, with the same multi-dimensional analysis used by
-						professional trading desks.
+						Transform complex currency relationships into actionable intelligence. Professional-grade
+						multi-dimensional analysis reveals which currencies are strongest and weakest in real-time.
 					</p>
 
-					<div class="bg-background rounded-xl p-6 border border-border">
-						<h3 class="text-lg font-semibold text-foreground mb-4">The Currency Selection Problem</h3>
-						<p class="text-muted">
-							Most traders pick currency pairs randomly or based on gut feeling. Professional traders use
-							systematic currency strength analysis to identify the strongest vs. weakest currencies,
-							maximizing profit potential while minimizing correlation risk.
+					<div class="bg-surface-elevated rounded-2xl p-8 border border-border">
+						<h3 class="text-xl font-bold text-foreground mb-4">Currency Selection Challenge</h3>
+						<p class="text-muted leading-relaxed">
+							Most traders select currency pairs randomly or based on intuition. Professional traders use
+							systematic currency strength analysis to identify optimal pairings, maximizing profit potential
+							while minimizing correlation risk exposure.
 						</p>
 					</div>
 
 					<div class="space-y-4">
-						<h3 class="text-lg font-semibold text-foreground">Key Benefits</h3>
-						<ul class="space-y-2">
+						<h3 class="text-xl font-bold text-foreground">Professional Benefits</h3>
+						<ul class="space-y-3">
 							<li class="flex items-center gap-3">
-								<svg class="w-5 h-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-								</svg>
-								<span class="text-muted">Identify strongest vs. weakest currencies instantly</span>
+								<div class="w-6 h-6 bg-success/10 rounded-lg flex items-center justify-center">
+									<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+									</svg>
+								</div>
+								<span class="text-muted">Identify strongest vs. weakest currencies systematically</span>
 							</li>
 							<li class="flex items-center gap-3">
-								<svg class="w-5 h-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-								</svg>
-								<span class="text-muted">Spot divergences between retail and institutional positioning</span>
+								<div class="w-6 h-6 bg-success/10 rounded-lg flex items-center justify-center">
+									<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+									</svg>
+								</div>
+								<span class="text-muted">Detect divergences between retail and institutional positioning</span>
 							</li>
 							<li class="flex items-center gap-3">
-								<svg class="w-5 h-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-								</svg>
-								<span class="text-muted">Reduce correlation risk in portfolio management</span>
-							</li>
-							<li class="flex items-center gap-3">
-								<svg class="w-5 h-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-								</svg>
-								<span class="text-muted">Time entries with optimal currency pair selection</span>
+								<div class="w-6 h-6 bg-success/10 rounded-lg flex items-center justify-center">
+									<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+									</svg>
+								</div>
+								<span class="text-muted">Minimize correlation risk in portfolio management</span>
 							</li>
 						</ul>
 					</div>
@@ -339,119 +349,92 @@
 		</div>
 	</section>
 
-	<!-- XP Learning System -->
+	<!-- Professional Education System -->
 	<section id="learning" class="scroll-mt-20">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 			<div>
-				<div class="flex items-center gap-3 mb-6">
-					<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-						<svg class="w-6 h-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-						</svg>
+				<div class="flex items-center gap-4 mb-8">
+					<div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center">
+						<GraduationCap class="text-secondary" size={32} />
 					</div>
 					<div>
-						<h2 class="text-3xl font-bold text-foreground">XP Learning System</h2>
-						<p class="text-lg text-secondary font-medium">Structured Trading Education</p>
+						<div class="text-sm font-bold text-secondary uppercase tracking-wider mb-1">Education</div>
+						<h2 class="text-4xl font-bold text-foreground">Professional Education</h2>
+						<p class="text-lg text-muted font-medium">Structured Learning System</p>
 					</div>
 				</div>
 
-				<div class="space-y-6">
+				<div class="space-y-8">
 					<p class="text-xl text-muted leading-relaxed">
-						Master trading through the world's most comprehensive gamified education platform.
-						Follow a proven 1-3 year roadmap that takes you from complete beginner to expert trader
-						with measurable skill progression.
+						Master trading through the world's most comprehensive systematic education platform.
+						Follow a proven methodology that transforms novice traders into professional market participants
+						with measurable skill progression and competency validation.
 					</p>
 
-					<div class="bg-background rounded-xl p-6 border border-border">
-						<h3 class="text-lg font-semibold text-foreground mb-4">The Education Gap Problem</h3>
-						<p class="text-muted">
-							Most trading education is fragmented, theoretical, and lacks clear progression. Our XP Learning System
-							provides structured, practical education with measurable milestones, ensuring you build real skills
-							systematically rather than jumping randomly between concepts.
+					<div class="bg-surface-elevated rounded-2xl p-8 border border-border">
+						<h3 class="text-xl font-bold text-foreground mb-4">Education Gap Analysis</h3>
+						<p class="text-muted leading-relaxed">
+							Traditional trading education lacks structure and measurable outcomes. Our Professional Education System
+							provides systematic skill development with clear milestones, ensuring comprehensive competency
+							rather than fragmented knowledge acquisition.
 						</p>
 					</div>
 
-					<div class="grid grid-cols-2 gap-4">
-						<div class="bg-secondary/5 rounded-lg p-4 border border-secondary/20">
-							<div class="text-2xl font-bold text-secondary">200+</div>
-							<div class="text-sm text-muted">Interactive Lessons</div>
+					<div class="grid grid-cols-2 gap-6">
+						<div class="bg-secondary/5 rounded-2xl p-6 border border-secondary/20">
+							<div class="text-3xl font-bold text-secondary">200+</div>
+							<div class="text-sm text-muted font-medium">Interactive Modules</div>
+							<div class="text-xs text-secondary font-semibold mt-1">Comprehensive Curriculum</div>
 						</div>
-						<div class="bg-primary/5 rounded-lg p-4 border border-primary/20">
-							<div class="text-2xl font-bold text-primary">12</div>
-							<div class="text-sm text-muted">Core Disciplines</div>
-						</div>
-					</div>
-
-					<div class="space-y-4">
-						<h3 class="text-lg font-semibold text-foreground">Learning Progression</h3>
-						<div class="space-y-3">
-							<div class="flex items-center gap-3 p-3 bg-background rounded-lg">
-								<Badge variant="error">D-Tier</Badge>
-								<span class="text-muted">Beginner fundamentals and basic concepts</span>
-							</div>
-							<div class="flex items-center gap-3 p-3 bg-background rounded-lg">
-								<Badge variant="warning">C-Tier</Badge>
-								<span class="text-muted">Intermediate strategy development</span>
-							</div>
-							<div class="flex items-center gap-3 p-3 bg-background rounded-lg">
-								<Badge variant="default">B-Tier</Badge>
-								<span class="text-muted">Advanced technical and fundamental analysis</span>
-							</div>
-							<div class="flex items-center gap-3 p-3 bg-background rounded-lg">
-								<Badge variant="primary">A-Tier</Badge>
-								<span class="text-muted">Professional risk management and psychology</span>
-							</div>
-							<div class="flex items-center gap-3 p-3 bg-background rounded-lg">
-								<Badge variant="success">A+</Badge>
-								<span class="text-muted">Expert-level institutional strategies</span>
-							</div>
+						<div class="bg-primary/5 rounded-2xl p-6 border border-primary/20">
+							<div class="text-3xl font-bold text-primary">12</div>
+							<div class="text-sm text-muted font-medium">Core Disciplines</div>
+							<div class="text-xs text-primary font-semibold mt-1">Professional Standards</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="space-y-6">
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Adaptive Learning Technology</h3>
-					<ul class="space-y-3">
-						<li class="flex items-start gap-3">
-							<div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-							<div>
-								<div class="font-medium text-foreground">Personalized Learning Paths</div>
-								<div class="text-sm text-muted">AI-driven curriculum that adapts to your learning speed and identifies knowledge gaps</div>
-							</div>
-						</li>
-						<li class="flex items-start gap-3">
-							<div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-							<div>
-								<div class="font-medium text-foreground">Real-Time Assessment</div>
-								<div class="text-sm text-muted">Immediate feedback on quizzes and practical exercises with detailed explanations</div>
-							</div>
-						</li>
-						<li class="flex items-start gap-3">
-							<div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-							<div>
-								<div class="font-medium text-foreground">Progress Analytics</div>
-								<div class="text-sm text-muted">Detailed competency mapping showing strengths, weaknesses, and recommended focus areas</div>
-							</div>
-						</li>
-					</ul>
+			<div class="space-y-8">
+				<Card class="p-8">
+					<h3 class="text-2xl font-bold text-foreground mb-6">Professional Progression System</h3>
+					<div class="space-y-4">
+						<div class="flex items-center gap-4 p-4 bg-background rounded-xl">
+							<Badge variant="error">Novice</Badge>
+							<span class="text-muted">Fundamental concepts and market basics</span>
+						</div>
+						<div class="flex items-center gap-4 p-4 bg-background rounded-xl">
+							<Badge variant="warning">Intermediate</Badge>
+							<span class="text-muted">Strategy development and risk management</span>
+						</div>
+						<div class="flex items-center gap-4 p-4 bg-background rounded-xl">
+							<Badge variant="default">Advanced</Badge>
+							<span class="text-muted">Technical and fundamental analysis mastery</span>
+						</div>
+						<div class="flex items-center gap-4 p-4 bg-background rounded-xl">
+							<Badge variant="primary">Professional</Badge>
+							<span class="text-muted">Institutional strategies and psychology</span>
+						</div>
+						<div class="flex items-center gap-4 p-4 bg-background rounded-xl">
+							<Badge variant="success">Expert</Badge>
+							<span class="text-muted">Advanced institutional methodologies</span>
+						</div>
+					</div>
 				</Card>
 
-				<Card class="p-6 bg-gradient-to-br from-secondary/5 to-primary/5">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Proven Learning Outcomes</h3>
+				<Card class="p-8 bg-gradient-to-br from-secondary/5 to-primary/5">
+					<h3 class="text-2xl font-bold text-foreground mb-6">Validated Outcomes</h3>
 					<div class="space-y-4">
 						<div class="flex justify-between items-center">
-							<span class="text-muted">Average completion time</span>
+							<span class="text-muted font-medium">Average completion timeline</span>
 							<span class="font-bold text-foreground">18 months</span>
 						</div>
 						<div class="flex justify-between items-center">
-							<span class="text-muted">Student satisfaction rate</span>
+							<span class="text-muted font-medium">Professional satisfaction rate</span>
 							<span class="font-bold text-success">94%</span>
 						</div>
 						<div class="flex justify-between items-center">
-							<span class="text-muted">Skill improvement (measured)</span>
+							<span class="text-muted font-medium">Measured skill improvement</span>
 							<span class="font-bold text-primary">340%</span>
 						</div>
 					</div>
@@ -460,120 +443,120 @@
 		</div>
 	</section>
 
-	<!-- Trading Journal -->
+	<!-- Advanced Analytics -->
 	<section id="journal" class="scroll-mt-20">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-			<div class="order-2 lg:order-1 space-y-6">
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Advanced Analytics Engine</h3>
+			<div class="order-2 lg:order-1 space-y-8">
+				<Card class="p-8">
+					<h3 class="text-2xl font-bold text-foreground mb-6">Advanced Analytics Engine</h3>
 					<div class="grid grid-cols-2 gap-4">
-						<div class="text-center p-3 bg-background rounded-lg">
+						<div class="text-center p-4 bg-background rounded-xl border border-border">
 							<div class="text-2xl font-bold text-primary">50+</div>
-							<div class="text-xs text-muted">Performance Metrics</div>
+							<div class="text-xs text-muted font-medium">Performance Metrics</div>
 						</div>
-						<div class="text-center p-3 bg-background rounded-lg">
+						<div class="text-center p-4 bg-background rounded-xl border border-border">
 							<div class="text-2xl font-bold text-success">100%</div>
-							<div class="text-xs text-muted">Trade Accuracy</div>
+							<div class="text-xs text-muted font-medium">Trade Accuracy</div>
 						</div>
-						<div class="text-center p-3 bg-background rounded-lg">
+						<div class="text-center p-4 bg-background rounded-xl border border-border">
 							<div class="text-2xl font-bold text-warning">Real-Time</div>
-							<div class="text-xs text-muted">P&L Tracking</div>
+							<div class="text-xs text-muted font-medium">P&L Tracking</div>
 						</div>
-						<div class="text-center p-3 bg-background rounded-lg">
-							<div class="text-2xl font-bold text-secondary">Auto</div>
-							<div class="text-xs text-muted">Broker Import</div>
+						<div class="text-center p-4 bg-background rounded-xl border border-border">
+							<div class="text-2xl font-bold text-secondary">Automated</div>
+							<div class="text-xs text-muted font-medium">Broker Import</div>
 						</div>
 					</div>
 				</Card>
 
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Psychology Matrix</h3>
-					<p class="text-muted mb-4">
+				<Card class="p-8">
+					<h3 class="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+						<Brain class="text-primary" size={24} />
+						Psychology Matrix
+					</h3>
+					<p class="text-muted mb-6 leading-relaxed">
 						Track emotional states and decision quality alongside technical performance.
-						Identify psychological patterns that impact your trading results.
+						Identify psychological patterns that impact trading results with professional-grade behavioral analysis.
 					</p>
-					<div class="space-y-2">
+					<div class="space-y-3">
 						<div class="flex justify-between items-center">
-							<span class="text-sm text-muted">Emotional State Tracking</span>
+							<span class="text-sm text-muted font-medium">Emotional State Tracking</span>
 							<Badge variant="primary">Active</Badge>
 						</div>
 						<div class="flex justify-between items-center">
-							<span class="text-sm text-muted">Decision Quality Scoring</span>
+							<span class="text-sm text-muted font-medium">Decision Quality Scoring</span>
 							<Badge variant="success">Enabled</Badge>
 						</div>
 						<div class="flex justify-between items-center">
-							<span class="text-sm text-muted">Pattern Recognition</span>
+							<span class="text-sm text-muted font-medium">Pattern Recognition</span>
 							<Badge variant="warning">AI-Powered</Badge>
 						</div>
 					</div>
 				</Card>
-
-				<Card class="p-6 bg-gradient-to-br from-primary/5 to-success/5">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Trade Replay Technology</h3>
-					<p class="text-muted">
-						Reconstruct any trade with full market context. See exactly what the market looked like
-						when you made your decision, enabling deep learning from both wins and losses.
-					</p>
-				</Card>
 			</div>
 
 			<div class="order-1 lg:order-2">
-				<div class="flex items-center gap-3 mb-6">
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-						<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
-						</svg>
+				<div class="flex items-center gap-4 mb-8">
+					<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+						<BookOpen class="text-primary" size={32} />
 					</div>
 					<div>
-						<h2 class="text-3xl font-bold text-foreground">Trading Journal</h2>
-						<p class="text-lg text-primary font-medium">Advanced Performance Analytics</p>
+						<div class="text-sm font-bold text-primary uppercase tracking-wider mb-1">Analytics</div>
+						<h2 class="text-4xl font-bold text-foreground">Advanced Analytics</h2>
+						<p class="text-lg text-muted font-medium">Performance Intelligence</p>
 					</div>
 				</div>
 
-				<div class="space-y-6">
+				<div class="space-y-8">
 					<p class="text-xl text-muted leading-relaxed">
-						Transform your trading performance through comprehensive analytics and psychological insights.
-						Our institutional-grade journal goes far beyond simple trade logging to provide deep
-						performance intelligence.
+						Transform trading performance through comprehensive analytics and psychological insights.
+						Our institutional-grade journal provides deep performance intelligence far beyond
+						simple trade logging capabilities.
 					</p>
 
-					<div class="bg-background rounded-xl p-6 border border-border">
-						<h3 class="text-lg font-semibold text-foreground mb-4">The Performance Improvement Challenge</h3>
-						<p class="text-muted">
-							Most traders repeat the same mistakes because they lack systematic performance analysis.
-							Our journal identifies patterns in both your technical execution and psychological state,
-							providing actionable insights for continuous improvement.
+					<div class="bg-surface-elevated rounded-2xl p-8 border border-border">
+						<h3 class="text-xl font-bold text-foreground mb-4">Performance Optimization Challenge</h3>
+						<p class="text-muted leading-relaxed">
+							Most traders repeat identical mistakes due to lack of systematic performance analysis.
+							Our analytics engine identifies patterns in technical execution and psychological state,
+							providing actionable intelligence for continuous improvement.
 						</p>
 					</div>
 
 					<div class="space-y-4">
-						<h3 class="text-lg font-semibold text-foreground">Key Capabilities</h3>
-						<ul class="space-y-3">
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-success mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-								</svg>
+						<h3 class="text-xl font-bold text-foreground">Core Capabilities</h3>
+						<ul class="space-y-4">
+							<li class="flex items-start gap-4">
+								<div class="w-6 h-6 bg-success/10 rounded-lg flex items-center justify-center mt-0.5">
+									<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+									</svg>
+								</div>
 								<div>
-									<div class="font-medium text-foreground">Automatic Broker Integration</div>
+									<div class="font-bold text-foreground">Automated Broker Integration</div>
 									<div class="text-sm text-muted">Direct import from major brokers with real-time synchronization</div>
 								</div>
 							</li>
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-success mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-								</svg>
+							<li class="flex items-start gap-4">
+								<div class="w-6 h-6 bg-success/10 rounded-lg flex items-center justify-center mt-0.5">
+									<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+									</svg>
+								</div>
 								<div>
-									<div class="font-medium text-foreground">Pattern Recognition AI</div>
-									<div class="text-sm text-muted">Identify recurring mistakes and successful patterns automatically</div>
+									<div class="font-bold text-foreground">AI Pattern Recognition</div>
+									<div class="text-sm text-muted">Automatically identify recurring mistakes and successful patterns</div>
 								</div>
 							</li>
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-success mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-								</svg>
+							<li class="flex items-start gap-4">
+								<div class="w-6 h-6 bg-success/10 rounded-lg flex items-center justify-center mt-0.5">
+									<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+									</svg>
+								</div>
 								<div>
-									<div class="font-medium text-foreground">Professional Reporting</div>
-									<div class="text-sm text-muted">Generate institutional-quality performance reports for accountability</div>
+									<div class="font-bold text-foreground">Institutional Reporting</div>
+									<div class="text-sm text-muted">Generate professional-quality performance reports</div>
 								</div>
 							</li>
 						</ul>
@@ -583,270 +566,106 @@
 		</div>
 	</section>
 
-	<!-- Community Hub -->
-	<section id="community" class="scroll-mt-20">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-			<div>
-				<div class="flex items-center gap-3 mb-6">
-					<div class="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center">
-						<svg class="w-6 h-6 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-						</svg>
-					</div>
-					<div>
-						<h2 class="text-3xl font-bold text-foreground">Community Hub</h2>
-						<p class="text-lg text-success font-medium">Collaborative Trading Environment</p>
-					</div>
-				</div>
-
-				<div class="space-y-6">
-					<p class="text-xl text-muted leading-relaxed">
-						Accelerate your learning through competitive challenges and peer interaction. Connect with
-						like-minded traders globally in a verified, professional environment designed for serious
-						market participants.
-					</p>
-
-					<div class="bg-background rounded-xl p-6 border border-border">
-						<h3 class="text-lg font-semibold text-foreground mb-4">The Isolation Problem</h3>
-						<p class="text-muted">
-							Trading is inherently lonely, leading to poor decision-making and lack of accountability.
-							Our community provides structured interaction with verified traders, creating motivation,
-							learning opportunities, and professional networking that accelerates skill development.
-						</p>
-					</div>
-
-					<div class="grid grid-cols-2 gap-4">
-						<div class="bg-success/5 rounded-lg p-4 border border-success/20">
-							<div class="text-2xl font-bold text-success">5000+</div>
-							<div class="text-sm text-muted">Active Members</div>
-						</div>
-						<div class="bg-primary/5 rounded-lg p-4 border border-primary/20">
-							<div class="text-2xl font-bold text-primary">24/7</div>
-							<div class="text-sm text-muted">Live Chat</div>
-						</div>
-					</div>
-
-					<div class="space-y-4">
-						<h3 class="text-lg font-semibold text-foreground">Community Features</h3>
-						<ul class="space-y-3">
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-success mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-								</svg>
-								<div>
-									<div class="font-medium text-foreground">Monthly Trading Challenges</div>
-									<div class="text-sm text-muted">Compete in verified performance challenges with transparent, audited results</div>
-								</div>
-							</li>
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-success mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-								</svg>
-								<div>
-									<div class="font-medium text-foreground">Live Trading Rooms</div>
-									<div class="text-sm text-muted">Real-time market analysis sessions with experienced traders</div>
-								</div>
-							</li>
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-success mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-								</svg>
-								<div>
-									<div class="font-medium text-foreground">Mentorship Matching</div>
-									<div class="text-sm text-muted">Connect with experienced traders for personalized guidance</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="space-y-6">
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Real-Time Leaderboards</h3>
-					<div class="space-y-3">
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<div class="flex items-center gap-3">
-								<div class="w-8 h-8 bg-warning rounded-full flex items-center justify-center text-sm font-bold">1</div>
-								<span class="font-medium text-foreground">TraderPro_2024</span>
-							</div>
-							<span class="text-success font-bold">+24.7%</span>
-						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<div class="flex items-center gap-3">
-								<div class="w-8 h-8 bg-muted rounded-full flex items-center justify-center text-sm font-bold">2</div>
-								<span class="font-medium text-foreground">MarketMaster</span>
-							</div>
-							<span class="text-success font-bold">+18.3%</span>
-						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<div class="flex items-center gap-3">
-								<div class="w-8 h-8 bg-warning/50 rounded-full flex items-center justify-center text-sm font-bold">3</div>
-								<span class="font-medium text-foreground">FXNinja</span>
-							</div>
-							<span class="text-success font-bold">+15.9%</span>
-						</div>
-					</div>
-				</Card>
-
-				<Card class="p-6 bg-gradient-to-br from-success/5 to-primary/5">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Verified Performance</h3>
-					<p class="text-muted mb-4">
-						All community challenges use verified, audited performance data. No fake results,
-						no manipulation - just transparent competition that drives real improvement.
-					</p>
-					<div class="grid grid-cols-2 gap-4 text-center">
-						<div>
-							<div class="text-2xl font-bold text-success">100%</div>
-							<div class="text-sm text-muted">Verified Results</div>
-						</div>
-						<div>
-							<div class="text-2xl font-bold text-primary">Zero</div>
-							<div class="text-sm text-muted">Fake Accounts</div>
-						</div>
-					</div>
-				</Card>
-
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">WebSocket Technology</h3>
-					<p class="text-muted">
-						Experience real-time chat and live market discussions with enterprise-grade WebSocket
-						infrastructure supporting 1000+ concurrent users without lag or disconnections.
-					</p>
-				</Card>
-			</div>
-		</div>
-	</section>
-
-	<!-- Risk Management -->
+	<!-- Risk Management System -->
 	<section id="risk" class="scroll-mt-20">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-			<div class="order-2 lg:order-1 space-y-6">
-				<Card class="p-6">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Intelligent Trade Blocking</h3>
+			<div class="order-2 lg:order-1 space-y-8">
+				<Card class="p-8">
+					<h3 class="text-2xl font-bold text-foreground mb-6">Intelligent Protection System</h3>
 					<div class="space-y-4">
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">Drawdown Threshold</span>
-							<Badge variant="error">5% Daily</Badge>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">Drawdown Threshold Monitoring</span>
+							<Badge variant="error">5% Daily Limit</Badge>
 						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">Consecutive Losses</span>
-							<Badge variant="warning">3 Trades</Badge>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">Consecutive Loss Protection</span>
+							<Badge variant="warning">3 Trade Limit</Badge>
 						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">Emotional State</span>
-							<Badge variant="secondary">AI Monitored</Badge>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">Emotional State Monitoring</span>
+							<Badge variant="secondary">AI Analysis</Badge>
 						</div>
-						<div class="flex items-center justify-between p-3 bg-background rounded-lg">
-							<span class="font-medium text-foreground">Re-enable Process</span>
-							<Badge variant="primary">Reflection Required</Badge>
+						<div class="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
+							<span class="font-bold text-foreground">Structured Re-enablement</span>
+							<Badge variant="primary">Reflection Protocol</Badge>
 						</div>
 					</div>
 				</Card>
 
-				<Card class="p-6 bg-gradient-to-br from-error/5 to-warning/5">
-					<h3 class="text-xl font-semibold text-foreground mb-4">Behavioral Intervention</h3>
-					<p class="text-muted mb-4">
-						When risk thresholds are breached, our system doesn't just block trades - it guides you
-						through a structured reflection process to understand what went wrong and how to prevent it.
-					</p>
-					<div class="space-y-2">
-						<div class="flex items-center gap-2">
-							<svg class="w-4 h-4 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 15.5c-.77.833.192 2.5 1.732 2.5z" />
-							</svg>
-							<span class="text-sm text-muted">Mandatory cooling-off period</span>
+				<Card class="p-8 bg-gradient-to-br from-error/5 to-warning/5">
+					<h3 class="text-2xl font-bold text-foreground mb-6">Capital Preservation Statistics</h3>
+					<div class="grid grid-cols-2 gap-6 text-center">
+						<div>
+							<div class="text-3xl font-bold text-error">73%</div>
+							<div class="text-sm text-muted font-medium">Drawdown Reduction</div>
 						</div>
-						<div class="flex items-center gap-2">
-							<svg class="w-4 h-4 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-							</svg>
-							<span class="text-sm text-muted">Guided self-assessment questionnaire</span>
-						</div>
-						<div class="flex items-center gap-2">
-							<svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-							</svg>
-							<span class="text-sm text-muted">Action plan development</span>
+						<div>
+							<div class="text-3xl font-bold text-success">92%</div>
+							<div class="text-sm text-muted font-medium">User Satisfaction</div>
 						</div>
 					</div>
 				</Card>
 			</div>
 
 			<div class="order-1 lg:order-2">
-				<div class="flex items-center gap-3 mb-6">
-					<div class="w-12 h-12 bg-error/10 rounded-lg flex items-center justify-center">
-						<svg class="w-6 h-6 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-						</svg>
+				<div class="flex items-center gap-4 mb-8">
+					<div class="w-16 h-16 bg-error/10 rounded-2xl flex items-center justify-center">
+						<Shield class="text-error" size={32} />
 					</div>
 					<div>
-						<h2 class="text-3xl font-bold text-foreground">Risk Management</h2>
-						<p class="text-lg text-error font-medium">Intelligent Capital Protection</p>
+						<div class="text-sm font-bold text-error uppercase tracking-wider mb-1">Risk Control</div>
+						<h2 class="text-4xl font-bold text-foreground">Risk Management</h2>
+						<p class="text-lg text-muted font-medium">Capital Protection System</p>
 					</div>
 				</div>
 
-				<div class="space-y-6">
+				<div class="space-y-8">
 					<p class="text-xl text-muted leading-relaxed">
-						Protect your capital through intelligent automation and behavioral intervention. Our advanced
-						risk management system doesn't just set limits - it actively prevents the emotional trading
-						that destroys accounts.
+						Protect capital through intelligent automation and behavioral intervention. Our advanced
+						risk management system prevents emotional trading that destroys accounts through
+						systematic intervention protocols.
 					</p>
 
-					<div class="bg-background rounded-xl p-6 border border-border">
-						<h3 class="text-lg font-semibold text-foreground mb-4">The Emotional Trading Problem</h3>
-						<p class="text-muted">
-							80% of trading losses occur during emotional states when traders abandon their rules.
-							Our system recognizes these dangerous patterns and intervenes automatically, forcing
-							a structured cooling-off period that prevents catastrophic losses.
+					<div class="bg-surface-elevated rounded-2xl p-8 border border-border">
+						<h3 class="text-xl font-bold text-foreground mb-4">Emotional Trading Prevention</h3>
+						<p class="text-muted leading-relaxed">
+							80% of trading losses occur during emotional states when traders abandon systematic approaches.
+							Our system recognizes dangerous patterns and intervenes automatically, enforcing
+							structured cooling-off periods that prevent catastrophic losses.
 						</p>
 					</div>
 
 					<div class="space-y-4">
-						<h3 class="text-lg font-semibold text-foreground">Protection Features</h3>
-						<ul class="space-y-3">
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-error mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728" />
-								</svg>
+						<h3 class="text-xl font-bold text-foreground">Protection Features</h3>
+						<ul class="space-y-4">
+							<li class="flex items-start gap-4">
+								<div class="w-6 h-6 bg-error/10 rounded-lg flex items-center justify-center mt-0.5">
+									<Lock class="text-error" size={16} />
+								</div>
 								<div>
-									<div class="font-medium text-foreground">Automatic Trade Blocking</div>
+									<div class="font-bold text-foreground">Automatic Trade Blocking</div>
 									<div class="text-sm text-muted">Immediate platform lockout when risk thresholds are exceeded</div>
 								</div>
 							</li>
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-warning mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-								</svg>
+							<li class="flex items-start gap-4">
+								<div class="w-6 h-6 bg-warning/10 rounded-lg flex items-center justify-center mt-0.5">
+									<Activity class="text-warning" size={16} />
+								</div>
 								<div>
-									<div class="font-medium text-foreground">Real-Time Portfolio Heat</div>
-									<div class="text-sm text-muted">Continuous monitoring of position sizing and correlation exposure</div>
+									<div class="font-bold text-foreground">Real-Time Portfolio Monitoring</div>
+									<div class="text-sm text-muted">Continuous assessment of position sizing and correlation exposure</div>
 								</div>
 							</li>
-							<li class="flex items-start gap-3">
-								<svg class="w-5 h-5 text-primary mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-								</svg>
+							<li class="flex items-start gap-4">
+								<div class="w-6 h-6 bg-primary/10 rounded-lg flex items-center justify-center mt-0.5">
+									<Unlock class="text-primary" size={16} />
+								</div>
 								<div>
-									<div class="font-medium text-foreground">Structured Re-enablement</div>
-									<div class="text-sm text-muted">Mandatory reflection and planning before trading privileges are restored</div>
+									<div class="font-bold text-foreground">Structured Re-enablement Process</div>
+									<div class="text-sm text-muted">Mandatory reflection and planning before trading privileges restoration</div>
 								</div>
 							</li>
 						</ul>
-					</div>
-
-					<div class="bg-gradient-to-r from-error/10 to-warning/10 rounded-xl p-6 border border-error/20">
-						<h3 class="text-lg font-semibold text-foreground mb-2">Capital Preservation Statistics</h3>
-						<div class="grid grid-cols-2 gap-4 text-center">
-							<div>
-								<div class="text-2xl font-bold text-error">73%</div>
-								<div class="text-sm text-muted">Drawdown Reduction</div>
-							</div>
-							<div>
-								<div class="text-2xl font-bold text-success">92%</div>
-								<div class="text-sm text-muted">User Satisfaction</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -855,40 +674,44 @@
 
 </div>
 
-<!-- Call to Action Section -->
+<!-- Professional Call to Action Section -->
 <section class="bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-24">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="container">
 		<div class="text-center">
-			<h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-				Ready to Transform Your Trading?
+			<div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-bold mb-6">
+				<Target size={16} />
+				Enterprise Ready
+			</div>
+			<h2 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-6">
+				Transform Your Trading Performance
 			</h2>
-			<p class="mt-6 text-xl leading-8 text-muted max-w-3xl mx-auto">
-				Join thousands of serious traders who have chosen PriceActionTalk as their professional trading platform.
-				Start with our comprehensive free trial and experience institutional-quality tools designed for retail success.
+			<p class="text-xl leading-8 text-muted max-w-4xl mx-auto mb-10">
+				Join thousands of professional traders who rely on PriceActionTalk for institutional-quality 
+				market analysis, systematic education, and measurable performance improvement.
 			</p>
-			<div class="mt-10 flex items-center justify-center gap-x-6">
-				<Button href="/register" size="lg" class="px-8 py-4 text-lg">
-					Start Free Trial
+			<div class="flex items-center justify-center gap-6">
+				<Button href="/register" size="lg" class="px-8 py-4 text-lg font-semibold">
+					Start Professional Trial
 				</Button>
-				<Button href="/pricing" variant="secondary" size="lg" class="px-8 py-4 text-lg">
-					View Pricing Plans
+				<Button href="/pricing" variant="secondary" size="lg" class="px-8 py-4 text-lg font-semibold">
+					Enterprise Plans
 				</Button>
 			</div>
 		</div>
 
-		<!-- Trust Indicators -->
+		<!-- Professional trust indicators -->
 		<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
 			<div class="text-center">
-				<div class="text-3xl font-bold text-primary">10,000+</div>
-				<div class="text-muted">Active Traders</div>
+				<div class="text-4xl font-bold text-primary">10,000+</div>
+				<div class="text-muted font-medium">Professional Traders</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-success">99.9%</div>
-				<div class="text-muted">Uptime Guarantee</div>
+				<div class="text-4xl font-bold text-success">99.9%</div>
+				<div class="text-muted font-medium">Enterprise Uptime</div>
 			</div>
 			<div class="text-center">
-				<div class="text-3xl font-bold text-warning">24/7</div>
-				<div class="text-muted">Professional Support</div>
+				<div class="text-4xl font-bold text-warning">24/7</div>
+				<div class="text-muted font-medium">Professional Support</div>
 			</div>
 		</div>
 	</div>

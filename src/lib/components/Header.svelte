@@ -4,15 +4,16 @@
 	import { auth } from '$stores/auth';
 	import ThemeToggle from './ThemeToggle.svelte';
 	import Logo from './Logo.svelte';
+	import { ChevronDown, X } from '$lib/components/icons';
 
 	let mobileMenuOpen = false;
 
 	const navigation = [
-		{ name: 'Home', href: '/' },
+		{ name: 'Platform', href: '/' },
 		{ name: 'Features', href: '/features' },
 		{ name: 'Pricing', href: '/pricing' },
-		{ name: 'About', href: '/about' },
-		{ name: 'Blog', href: '/blog' }
+		{ name: 'Resources', href: '/resources' },
+		{ name: 'Company', href: '/about' }
 	];
 
 	function toggleMobileMenu() {
@@ -24,26 +25,27 @@
 	}
 </script>
 
-<header class="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-	<nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<header class="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+	<nav class="container">
 		<div class="flex h-16 items-center justify-between">
-			<!-- Logo -->
+			<!-- Professional Logo -->
 			<div class="flex items-center">
-				<a href="/" class="flex items-center space-x-2">
+				<a href="/" class="flex items-center gap-3">
 					<Logo class="h-8 w-8" />
-					<span class="text-xl font-bold text-foreground">PriceActionTalk</span>
+					<div class="flex flex-col">
+						<span class="text-xl font-bold text-foreground">PriceActionTalk</span>
+						<span class="text-xs text-muted font-medium uppercase tracking-wider">Professional</span>
+					</div>
 				</a>
 			</div>
 
 			<!-- Desktop Navigation -->
 			<div class="hidden md:block">
-				<div class="ml-10 flex items-baseline space-x-4">
+				<div class="flex items-center space-x-1">
 					{#each navigation as item}
 						<a
 							href={item.href}
-							class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 {$page.url.pathname === item.href
-								? 'text-primary bg-primary/10'
-								: 'text-muted hover:text-foreground hover:bg-surface'}"
+							class="nav-link {$page.url.pathname === item.href ? 'active' : ''}"
 						>
 							{item.name}
 						</a>
@@ -51,33 +53,33 @@
 				</div>
 			</div>
 
-			<!-- Right side buttons -->
-			<div class="hidden md:flex items-center space-x-4">
+			<!-- Professional action buttons -->
+			<div class="hidden md:flex items-center gap-4">
 				<ThemeToggle />
 				
 				{#if $auth.isAuthenticated}
-					<a href="/app/dashboard" class="btn btn-primary">
-						Dashboard
+					<a href="/app/dashboard" class="btn btn-primary font-semibold">
+						Platform Access
 					</a>
-					<button on:click={auth.logout} class="btn btn-secondary">
-						Logout
+					<button on:click={auth.logout} class="btn btn-ghost">
+						Sign Out
 					</button>
 				{:else}
-					<a href="/login" class="btn btn-secondary">
-						Login
+					<a href="/login" class="btn btn-ghost">
+						Sign In
 					</a>
-					<a href="/register" class="btn btn-primary">
-						Get Started
+					<a href="/register" class="btn btn-primary font-semibold">
+						Start Trial
 					</a>
 				{/if}
 			</div>
 
 			<!-- Mobile menu button -->
-			<div class="md:hidden flex items-center space-x-2">
+			<div class="md:hidden flex items-center gap-2">
 				<ThemeToggle />
 				<button
 					on:click={toggleMobileMenu}
-					class="inline-flex items-center justify-center p-2 rounded-md text-muted hover:text-foreground hover:bg-surface focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+					class="p-2 rounded-lg text-muted hover:text-foreground hover:bg-surface transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
 				>
 					<span class="sr-only">Open main menu</span>
 					{#if !mobileMenuOpen}
@@ -85,23 +87,21 @@
 							<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 						</svg>
 					{:else}
-						<svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-						</svg>
+						<X size={24} />
 					{/if}
 				</button>
 			</div>
 		</div>
 
-		<!-- Mobile menu -->
+		<!-- Professional mobile menu -->
 		{#if mobileMenuOpen}
 			<div class="md:hidden">
-				<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-surface rounded-lg mt-2 border border-border">
+				<div class="px-4 pt-4 pb-6 space-y-2 bg-surface-elevated rounded-xl mt-4 border border-border shadow-xl">
 					{#each navigation as item}
 						<a
 							href={item.href}
 							on:click={closeMobileMenu}
-							class="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 {$page.url.pathname === item.href
+							class="block px-4 py-3 rounded-lg text-base font-medium transition-colors {$page.url.pathname === item.href
 								? 'text-primary bg-primary/10'
 								: 'text-muted hover:text-foreground hover:bg-background'}"
 						>
@@ -109,20 +109,20 @@
 						</a>
 					{/each}
 					
-					<div class="border-t border-border pt-4 pb-3">
+					<div class="border-t border-border pt-4 mt-4 space-y-2">
 						{#if $auth.isAuthenticated}
-							<a href="/app/dashboard" on:click={closeMobileMenu} class="block px-3 py-2 text-base font-medium text-primary">
-								Dashboard
+							<a href="/app/dashboard" on:click={closeMobileMenu} class="block px-4 py-3 text-base font-semibold text-primary">
+								Platform Access
 							</a>
-							<button on:click={() => { auth.logout(); closeMobileMenu(); }} class="block w-full text-left px-3 py-2 text-base font-medium text-muted hover:text-foreground">
-								Logout
+							<button on:click={() => { auth.logout(); closeMobileMenu(); }} class="block w-full text-left px-4 py-3 text-base font-medium text-muted hover:text-foreground">
+								Sign Out
 							</button>
 						{:else}
-							<a href="/login" on:click={closeMobileMenu} class="block px-3 py-2 text-base font-medium text-muted hover:text-foreground">
-								Login
+							<a href="/login" on:click={closeMobileMenu} class="block px-4 py-3 text-base font-medium text-muted hover:text-foreground">
+								Sign In
 							</a>
-							<a href="/register" on:click={closeMobileMenu} class="block px-3 py-2 text-base font-medium text-primary">
-								Get Started
+							<a href="/register" on:click={closeMobileMenu} class="block px-4 py-3 text-base font-semibold text-primary">
+								Start Trial
 							</a>
 						{/if}
 					</div>
