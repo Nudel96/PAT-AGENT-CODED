@@ -1,71 +1,101 @@
 <script lang="ts">
-	import Header from '$components/Header.svelte';
-	import Footer from '$components/Footer.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
+	import Card from '$lib/components/ui/Card.svelte';
+	import Badge from '$lib/components/ui/Badge.svelte';
+
+	let billingCycle: 'monthly' | 'annual' = 'monthly';
 
 	const plans = [
 		{
-			name: 'Free',
-			price: 0,
-			period: 'forever',
-			description: 'Perfect for getting started with basic trading tools',
+			name: 'Starter',
+			monthlyPrice: 0,
+			annualPrice: 0,
+			description: 'Perfect for beginners starting their trading journey',
 			features: [
-				'Basic trading journal (10 trades/month)',
-				'Limited macro bias data',
-				'Community forum access',
-				'Basic learning modules',
-				'Email support'
+				'XP Learning System (Full Access)',
+				'Community Hub Access',
+				'Basic Trading Journal (50 entries/month)',
+				'Educational Resources Library',
+				'Email Support',
+				'Mobile App Access',
+				'Trading Challenges Participation'
 			],
 			limitations: [
-				'No real-time data',
-				'Limited historical data',
-				'No advanced analytics',
-				'No priority support'
+				'Limited journal entries per month',
+				'Basic analytics only',
+				'No advanced risk management',
+				'No institutional data feeds'
 			],
-			cta: 'Get Started',
-			popular: false
+			cta: 'Start Free',
+			popular: false,
+			href: '/register?plan=starter'
 		},
 		{
-			name: 'Basic',
-			price: 29,
-			period: 'month',
-			description: 'Essential tools for serious retail traders',
+			name: 'Professional',
+			monthlyPrice: 97,
+			annualPrice: 970,
+			description: 'Comprehensive tools for serious retail traders',
 			features: [
-				'Unlimited trading journal',
-				'Real-time macro bias data',
-				'Heatman currency strength widget',
-				'Advanced learning paths',
-				'Trading challenges',
-				'Priority email support',
-				'Mobile app access'
+				'Everything in Starter (Unlimited)',
+				'Heatman Widget (Real-time Currency Strength)',
+				'Advanced Trading Journal (Unlimited)',
+				'Psychology Matrix Tracking',
+				'Trade Replay Technology',
+				'Performance Analytics (50+ Metrics)',
+				'Broker Integration (Auto-import)',
+				'Priority Support',
+				'Advanced Community Features',
+				'COT Data & Retail Sentiment'
 			],
 			limitations: [
-				'Limited historical data (6 months)',
-				'Basic analytics only'
+				'No AI-powered macro analysis',
+				'No automated risk management'
 			],
-			cta: 'Start Free Trial',
-			popular: true
+			cta: 'Start Professional Trial',
+			popular: true,
+			href: '/register?plan=professional'
 		},
 		{
-			name: 'Premium',
-			price: 79,
-			period: 'month',
-			description: 'Complete trading suite for professional traders',
+			name: 'Institutional',
+			monthlyPrice: 197,
+			annualPrice: 1970,
+			description: 'Enterprise-grade tools with AI-powered insights',
 			features: [
-				'Everything in Basic',
-				'Unlimited historical data',
-				'Advanced analytics & insights',
-				'Custom indicators',
-				'1-on-1 coaching sessions (2/month)',
-				'Private Discord community',
-				'API access',
-				'Priority chat support',
-				'Early access to new features'
+				'Everything in Professional',
+				'Macro Bias Tool (AI-Powered HeatScore)',
+				'Risk Management System (Auto Trade Blocking)',
+				'Institutional Data Feeds (50+ Sources)',
+				'Advanced Risk Analytics',
+				'Custom Alerts & Notifications',
+				'White-Glove Onboarding',
+				'Dedicated Account Manager',
+				'API Access (Full)',
+				'Priority Phone Support',
+				'Early Access to New Features'
 			],
 			limitations: [],
-			cta: 'Start Free Trial',
-			popular: false
+			cta: 'Start Institutional Trial',
+			popular: false,
+			href: '/register?plan=institutional'
 		}
 	];
+
+	function getPrice(plan: typeof plans[0]) {
+		const price = billingCycle === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
+		return price === 0 ? 'Free' : `$${price}`;
+	}
+
+	function getPeriod() {
+		return billingCycle === 'monthly' ? '/month' : '/year';
+	}
+
+	function getSavings(plan: typeof plans[0]) {
+		if (plan.monthlyPrice === 0) return '';
+		const monthlyCost = plan.monthlyPrice * 12;
+		const savings = monthlyCost - plan.annualPrice;
+		const percentage = Math.round((savings / monthlyCost) * 100);
+		return `Save ${percentage}%`;
+	}
 
 	const faqs = [
 		{
@@ -102,11 +132,9 @@
 </script>
 
 <svelte:head>
-	<title>Pricing - PriceActionTalk</title>
-	<meta name="description" content="Choose the perfect plan for your trading journey. From free basic tools to premium professional features." />
+	<title>Pricing - PriceActionTalk | Professional Trading Platform</title>
+	<meta name="description" content="Choose the perfect plan for your trading journey. From free starter tools to institutional-grade AI-powered analysis. Transparent pricing with no hidden fees." />
 </svelte:head>
-
-<Header />
 
 <main class="py-24 bg-background">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
